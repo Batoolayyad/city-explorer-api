@@ -10,12 +10,16 @@ server.use(cors());
 
 const PORT = process.env.PORT;
 
-// http://localhost:3001/getLocation?city_name=Amman
+server.get('/test',(req,res)=>{
+    res.send('ghhyjgku')
+})
+// http://localhost:3001/weather?city_name=Amman
 server.get('/weather',(req,res)=>{
     let cityData = req.query.city_name;
     let searchQuery = weatherData.find(item=>{
-        if (item.city_name == cityData)
-        return item;
+        if (item.city_name == cityData){
+            return item;
+        }
     })
     res.send(searchQuery)
 })
