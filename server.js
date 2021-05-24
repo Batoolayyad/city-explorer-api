@@ -3,7 +3,7 @@
 require('dotenv').config();
 const express = require ('express');
 const server =express();
-const weatherData =require('./weather.json')
+const weatherData =require('./data/weather.json')
 const cors = require('cors');
 const PORT = process.env.PORT
 server.use(cors())
@@ -14,9 +14,9 @@ server.use(cors())
 // })http://localhost:3001/getweather?city_name=Amman
 server.get('/getWeather', (req, res) => {
     console.log(req.query)
-    let weatherCity= req.query.city_name
+    let cityName= req.query.city_name
     let wetherItem = weatherData.find(item => {
-        if (item.city_name == weatherCity)
+        if (item.city_name == cityName)
             return item
     })
     res.send(wetherItem)
@@ -24,10 +24,11 @@ server.get('/getWeather', (req, res) => {
 
 
 server.get('*', (req, res) => {
-    res.status(500).send('the weather for this city is not found');
+    res.send('not found');
 })
 
 
-server.listen(PORT, () =>{
-    console.log(`listiningg on PORT ${PORT}`)
+
+server.listen(PORT, () => {
+    console.log(`Listening on PORT ${PORT}`);
 })
