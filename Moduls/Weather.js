@@ -7,7 +7,7 @@ module.exports = weatherhandler;
 class Forecast {
         constructor(item) {
             this.date = item.valid_date;
-            this.description = item.weather.description;
+            this.description = `low of ${item.min_temp}, hight of ${item.max_temp}, with ${item.weather.description}`;
         }
     }
     

@@ -10,10 +10,10 @@ const axios = require('axios')
 
 server.use(cors())
 
-server.get('/test', (req, res) => {
-    let test = 'test'
-    res.send(test)
-})
+// server.get('/test', (req, res) => {
+//     let test = 'test'
+//     res.send(test)
+// })
 
 
 const moviehandler=require('./Moduls/Movie');
